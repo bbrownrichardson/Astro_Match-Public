@@ -1,0 +1,76 @@
+<title>AstroMatch Users</title>
+{% include "Header.html" %}
+<body>
+
+<div class="container col-md-8 mx-auto">
+  <h1 class="title">AstroMatch</h1>
+  <div class="col-lg-4 float-left filters">
+    <div class="card">
+      <div class="card-header">
+      Filter
+    </div>
+    <div class="card-body">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="genderSelect">I'm</label>
+        </div>
+        <select class="custom-select" id="genderSelect" name="gender">
+          <option selected>Choose...</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="non-binary">Non-Binary</option>
+        </select>
+      </div>
+      <hr>
+
+      Seeking:<br>
+      <input id="prefMale" type="checkbox"> Men<br>
+      <input id="prefFemale" type="checkbox"> Women<br>
+      <input id="prefNon" type="checkbox"> Non-Binary<br>
+
+      <hr>
+
+      <input id="Aquarius" type="checkbox" checked="true"> Aquarius<br>
+      <input id="Pisces" type="checkbox" checked="true"> Pisces<br>
+      <input id="Aries" type="checkbox" checked="true"> Aries<br>
+      <input id="Taurus" type="checkbox" checked="true"> Taurus<br>
+      <input id="Gemini" type="checkbox" checked="true"> Gemini<br>
+      <input id="Cancer" type="checkbox" checked="true"> Cancer<br>
+      <input id="Leo" type="checkbox" checked="true"> Leo<br>
+      <input id="Virgo" type="checkbox" checked="true"> Virgo<br>
+      <input id="Libra" type="checkbox" checked="true"> Libra<br>
+      <input id="Scorpio" type="checkbox" checked="true"> Scorpio<br>
+      <input id="Sagittarius" type="checkbox" checked="true"> Sagittarius<br>
+      <input id="Capricorn" type="checkbox" checked="true"> Capricorn<br>
+    </div>
+  </div>
+
+  </div>
+  <div class="col-lg-8 float-right" id="users">
+    <ul style="list-style-type:none"  class="list">
+
+        {% for user in users %}
+            <li data-id="{{user['id']}}" data-pref="{{user['preference']}}">
+              <div class="card">
+                <div class="card-header">
+                <h4 class="name">{{user['name']}}</h4>
+                </div>
+                <div class="card-body">
+                  <p>
+                    Astrological Sign: <span class="sign">{{user['sign']|capitalize}}</span><br>
+                    Gender: <span class="gender">{{user['gender']|capitalize}}</span><br>
+                    Age: <span class="age">{{user['age']}}</span>
+                  </p>
+                <a href="/users/{{user['id']}}"class="btn btn-secondary btn-sm">View More</a>
+                </div>
+              </div>
+            </li>
+        {% endfor %}
+    </ul>
+  </div>
+</div>
+
+
+</body>
+{% include "Footer.html" %}
+</html>

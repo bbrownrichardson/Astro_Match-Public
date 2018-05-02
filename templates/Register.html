@@ -1,0 +1,82 @@
+{% include "Header.html" %}
+
+<form method="post" class="form-register" action="/register/">
+  <h2>AstroMatch Registration</h2>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="nameLabel" name="nameLabel">Name</span>
+    </div>
+    <input type="text" name="name" class="form-control" aria-label="Default" aria-describedby="nameLabel" autocomplete="off">
+  </div>
+
+  <!-- Gender Input -->
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="genderSelect">I Identify As</label>
+    </div>
+    <select class="custom-select" id="genderSelect" name="gender">
+      <option selected>Choose...</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="non-binary">Non-Binary</option>
+    </select>
+  </div>
+
+  <!-- Sign Input -->
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="signSelect">Astrological Sign</label>
+    </div>
+    <select class="custom-select" id="signSelect" name="sign">
+      <option selected>Choose...</option>
+      <option value="Aquarius">Aquarius</option>
+      <option value="Pisces">Pisces</option>
+      <option value="Aries">Aries</option>
+      <option value="Taurus">Taurus</option>
+      <option value="Gemini">Gemini</option>
+      <option value="Cancer">Cancer</option>
+      <option value="Leo">Leo</option>
+      <option value="Virgo">Virgo</option>
+      <option value="Libra">Libra</option>
+      <option value="Scorpio">Scorpio</option>
+      <option value="Sagittarius">Sagittarius</option>
+      <option value="Capricorn">Capricorn</option>
+    </select>
+  </div>
+
+  <!-- Age Input-->
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="ageLabel">Age</span>
+    </div>
+    <input type="number" class="form-control" aria-label="Default" aria-describedby="age" name="age">
+  </div>
+
+  <!-- Preference Input-->
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="prefSelect">I'm Seeking</label>
+    </div>
+    <select class="custom-select" id="prefSelect" name="preference">
+      <option selected>Choose...</option>
+      <option value="male">Men</option>
+      <option value="female">Women</option>
+      <option value="non-binary">Non-Binary</option>
+    </select>
+  </div>
+
+  <!-- Bio Input -->
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text">About Me</span>
+    </div>
+    <textarea class="form-control" name="bio"></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary float-right submit"
+    onclick="document.cookie = 'registered=True; path=/';
+    document.cookie = 'gender=' + $('#genderSelect').val() +'; path=/';
+    document.cookie = 'pref=' + $('#prefSelect').val() + '; path=/';">Submit</button>
+</form>
+
+{% include "Footer.html" %}

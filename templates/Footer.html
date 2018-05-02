@@ -1,0 +1,111 @@
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+
+<script type="text/javascript">
+//From https://www.w3schools.com/js/js_cookies.asp
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+var options = {
+  valueNames: [
+    'name',
+    'age',
+    'sign',
+    'gender',
+    { data: ['id'] },
+    { data: ['pref'] }
+  ]
+};
+var userList = new List('users', options);
+
+$('.filters :input').change(function(){
+  userList.filter(function(item) {
+    console.log(item.values())
+    //Would the other person be interested in the user?
+    if($('#genderSelect').val() != item.values().pref){
+      return false;
+    }
+
+    //Would the user be interested in the other person?
+    if(!$('#prefMale').is(":checked") && item.values().gender == 'Male'){
+      return false;
+    }
+
+    if(!$('#prefFemale').is(":checked") && item.values().gender == 'Female'){
+      return false;
+    }
+
+    if(!$('#prefNon').is(":checked") && item.values().gender == 'Non-Binary'){
+      return false;
+    }
+
+    if($('#Aquarius').is(":checked") && item.values().sign == 'Aquarius'){
+      return true;
+    }
+    else if($('#Pisces').is(":checked") && item.values().sign == 'Pisces'){
+      return true;
+    }
+    else if($('#Aries').is(":checked") && item.values().sign == 'Aries'){
+      return true;
+    }
+    else if($('#Taurus').is(":checked") && item.values().sign == 'Taurus'){
+      return true;
+    }
+    else if($('#Gemini').is(":checked") && item.values().sign == 'Gemini'){
+      return true;
+    }
+    else if($('#Cancer').is(":checked") && item.values().sign == 'Cancer'){
+      return true;
+    }
+    else if($('#Leo').is(":checked") && item.values().sign == 'Leo'){
+      return true;
+    }
+    else if($('#Virgo').is(":checked") && item.values().sign == 'Virgo'){
+      return true;
+    }
+    else if($('#Libra').is(":checked") && item.values().sign == 'Libra'){
+      return true;
+    }
+    else if($('#Scorpio').is(":checked") && item.values().sign == 'Scorpio'){
+      return true;
+    }
+    else if($('#Sagittarius').is(":checked") && item.values().sign == 'Sagittarius'){
+      return true;
+    }
+    else if($('#Capricorn').is(":checked") && item.values().sign == 'Capricorn'){
+      return true;
+    }
+    else{
+      return false;
+    }
+  });
+})
+
+$( document ).ready(function() {
+    $('#genderSelect').val(getCookie('gender'));
+    pref = getCookie('pref');
+    if(pref == 'male'){
+      $('#prefMale').prop( "checked", true );
+    }else if (pref == 'female') {
+      $('#prefFemale').prop( "checked", true );
+    }else if(pref == 'non-binary'){
+      $('#prefNon').prop( "checked", true );
+    }
+    $('.filters :input').trigger("change");
+  });
+
+</script>
