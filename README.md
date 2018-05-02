@@ -76,3 +76,9 @@ Expected Result:
 ]
 ```
 
+![alt text](https://github.com/bbrownrichardson/Astro_Match-Public/blob/master/Screenshots/Registration%20Screen.jpg "Registration Screen")
+
+![alt text](https://github.com/bbrownrichardson/Astro_Match-Public/blob/master/Screenshots/Users%20Screen.jpg "Users Compatibility Screen")
+
+![alt text](https://github.com/bbrownrichardson/Astro_Match-Public/blob/master/Screenshots/Users%20Screen.jpg "User Bio/Profile")
+
